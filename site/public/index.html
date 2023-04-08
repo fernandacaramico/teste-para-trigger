@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AquaTech | Página Inicial</title>
+
+</head>
+
+<body>
+    <h1>hello world</h1>
+    <p>Para testar o trigger, certifique-se de que a variável "process.env.AMBIENTE_PROCESSO" em "app.js" está com valor "desenvolvimento".</p>
+
+    <button class="botao" onclick="testatrigger()">Testar Trigger</button>
+
+    <p>
+        Ao clicar no botão acima, verifique se a resposta teve status 200 (OK) e verifique as tabelas "empresa" e "triggerizada" no banco de dados MySQL local.
+    </p>
+
+</body>
+
+</html>
+
+<script>
+    function testatrigger() {
+
+        // Enviando o valor da nova input
+        fetch("/testando/testatrigger", {
+            method: "POST"
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+</script>
